@@ -13,7 +13,19 @@ for i=3:length(VIS_export_dir)
     file = VIS_export_dir(i).name;
     path_compl=strcat(path, file);
     path_in=sprintf('%s/%s',destDir, file); 
-    I = imread(path_compl);
-    I_eq = histeq(I);
-    imwrite(I_eq, path_in);
+    
+    RGB = imread(path_compl);
+    HSV = rgb2hsv (RGB);
+    R = HSV(:,:,1);
+    G = HSV(:,:,2);
+    B = HSV(:,:,3);
+    R = adapthisteq(R);
+    G = adapthisteq(G);
+    B = adapthisteq(B);
+%   HSV(:,:,1) = R;
+%   HSV(:,:,2) = G;
+    HSV(:,:,3) = B;
+    RGB_ = hsv2rgb (HSV);
+
+    imwrite(RGB_, path_in);
 end
