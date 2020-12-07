@@ -34,7 +34,10 @@ for i = 1:step:1088-3
     end
 end
 
+%assegna alle variabili il corrispondente canale che si è scelto di
+%utilizzare per la loro rappresentazione
 R = channel(1);
 G = channel(2);
 B = channel(3);
+
 Iq = compositeImg(I,R,G,B,ws);

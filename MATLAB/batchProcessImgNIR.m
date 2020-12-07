@@ -7,14 +7,16 @@ load('calib.mat');
 
 NIR_dir = dir(path_NIR);
 
+% @channel[] permette di selezionare i canali da passare a compositeImg
 channel = [8, 8, 8];
-%Creazione cartelle
-destDir = sprintf('%s/exportNIR/%02d',origin_path_NIR, 0);
-mkdir(destDir);
-for i = 1:24
-    destDir = sprintf('%s/exportNIR/%02d',origin_path_NIR, i); 
-    mkdir(destDir);
-end
+
+% %Creazione cartelle
+% destDir = sprintf('%s/exportNIR/%02d',origin_path_NIR, 0);
+% mkdir(destDir);
+% for i = 1:24
+%     destDir = sprintf('%s/exportNIR/%02d',origin_path_NIR, i); 
+%     mkdir(destDir);
+% end
 
 for i = 1:length(NIR_dir)
     %Controllo su filename

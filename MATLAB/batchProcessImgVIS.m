@@ -7,7 +7,9 @@ load('calib.mat');
 
 VIS_dir = dir(path_VIS);
 
+% @channel[] permette di selezionare i canali da passare a compositeImg
 channel = [15, 8, 1];
+
 % %Creazione cartelle
 % destDir = sprintf('%s/exportVIS/%02d',origin_path_VIS, 0);
 % mkdir(destDir);
