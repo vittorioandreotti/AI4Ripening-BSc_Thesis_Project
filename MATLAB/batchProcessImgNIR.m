@@ -7,6 +7,7 @@ load('calib.mat');
 
 NIR_dir = dir(path_NIR);
 
+channel = [8, 8, 8];
 %Creazione cartelle
 destDir = sprintf('%s/exportNIR/%02d',origin_path_NIR, 0);
 mkdir(destDir);

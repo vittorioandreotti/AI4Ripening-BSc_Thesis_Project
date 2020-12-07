@@ -1,4 +1,4 @@
-function [Im16,Im,I,Iq] = calibImg(path,Ib,Iw,M,ws)
+function [Im16,Im,I,Iq] = calibImg(path,Ib,Iw,M,ws,channel)
 
 Im16 = (import_npy(path));
 % conversione Im16 in double
@@ -34,7 +34,7 @@ for i = 1:step:1088-3
     end
 end
 
-
-%Iq = compositeImg(I,15,9,2,ws); %VIS
-%Iq = compositeImg(I,12,14,6,ws); %VIS
-Iq = compositeImg(I,15,8,1,ws); %NIR
+R = channel(1);
+G = channel(2);
+B = channel(3);
+Iq = compositeImg(I,R,G,B,ws);

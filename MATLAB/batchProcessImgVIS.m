@@ -7,6 +7,7 @@ load('calib.mat');
 
 VIS_dir = dir(path_VIS);
 
+channel = [15, 8, 1];
 % %Creazione cartelle
 % destDir = sprintf('%s/exportVIS/%02d',origin_path_VIS, 0);
 % mkdir(destDir);
@@ -26,7 +27,7 @@ for i = 1:length(VIS_dir)
     % @Iq   = 3 canali corrispondenti a RGB (218x410x3). 
     %         I migliori canali sono: R=15, G=08, B=01.
     % @I    = Struttura contenente tutti i 15 canali VIS (218x410x15)
-    [Im16,Im,I,Iq] = calibImg(path_o,Ib,Iw,M4,4);
+    [Im16,Im,I,Iq] = calibImg(path_o,Ib,Iw,M4,4, channel);
     filename_in = sprintf('%s/exportVIS/%02d/%02d_%s.png',origin_path_VIS,0, 0, filename);
     %Ruota l'immagine di 270° in senso antiorario
     Iq_rot270 = rot90(Iq, 3);
