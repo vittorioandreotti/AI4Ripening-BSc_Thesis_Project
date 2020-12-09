@@ -7,7 +7,10 @@ path=sprintf('%s/exportVIS/%02d/', origin_path_VIS, 0);
 VIS_export_dir = dir(path);
 
 destDir = sprintf('%s/exportVIS/%02d/Hist_eq',origin_path_VIS, 0);
-mkdir(destDir);
+% mkdir(destDir);
+
+destDir_res = sprintf('%s/exportVIS/%02d/Hist_eq/Resize',origin_path_VIS, 0);
+%mkdir(destDir_res);
 
 for i=3:length(VIS_export_dir)
     file = VIS_export_dir(i).name;
@@ -26,6 +29,10 @@ for i=3:length(VIS_export_dir)
 %   HSV(:,:,2) = G;
     HSV(:,:,3) = B;
     RGB_ = hsv2rgb (HSV);
+%     imwrite(RGB_, path_in);
 
-    imwrite(RGB_, path_in);
+    RGB_RESIZE = imresize(RGB_, 3);
+    path_in_res = sprintf('%s/%s',destDir_res, file);
+    
+    imwrite(RGB_RESIZE, path_in_res);
 end
