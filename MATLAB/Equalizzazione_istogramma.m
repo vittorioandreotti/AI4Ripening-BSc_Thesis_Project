@@ -31,7 +31,7 @@ for i=3:length(VIS_export_dir)
     RGB_ = hsv2rgb (HSV);
 %     imwrite(RGB_, path_in);
 
-    RGB_RESIZE = imresize(RGB_, 3);
+    RGB_RESIZE = imresize(RGB_, 3, 'bilinear');
     path_in_res = sprintf('%s/%s',destDir_res, file);
     
     imwrite(RGB_RESIZE, path_in_res);
