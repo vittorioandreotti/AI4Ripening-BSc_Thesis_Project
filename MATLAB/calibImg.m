@@ -1,4 +1,4 @@
-function [Im16,Im,I,Iq] = calibImg(path,Ib,Iw,M,ws,channel)
+function [Im16,Im,I,Iq] = calibImg(path,Ib,Iw,M,ws,channel, alpha)
 
 Im16 = (import_npy(path));
 % conversione Im16 in double
@@ -10,7 +10,6 @@ Im = (Im - Ib) ./ (Iw - Ib) * calib_factor;
 step = ws;
 corrx = 0;
 corry = 0;
-Icalib = Im;
 %I = immagine rimpicciolita di un fattore di scala pari a ws
 I = zeros(int32(1088-corrx)/step, int32((2048-corry)/step),step*step-1);
 for i = 1:step:1088-3
@@ -40,4 +39,4 @@ R = channel(1);
 G = channel(2);
 B = channel(3);
 
-Iq = compositeImg(I,R,G,B,ws);
+Iq = compositeImg(I,R,G,B,alpha);
