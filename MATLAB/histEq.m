@@ -8,7 +8,10 @@ end
 
 f = waitbar(0, 'Elaborazione delle immagini in corso...', 'Name', 'Attendi...');
 steps = length(VIS_export_dir);
-for i=3:steps
+for i=1:steps
+    if VIS_export_dir(i).isdir == true
+        continue;
+    end
     file = VIS_export_dir(i).name;
     path_compl=strcat(path, file);
     path_in=sprintf('%s/%s',destDir, file); 

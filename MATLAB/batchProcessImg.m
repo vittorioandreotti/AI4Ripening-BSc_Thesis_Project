@@ -1,48 +1,45 @@
-alpha = 4.37;
 if indx == 1
     k = 15;
     ws = 4;
     M = M4;
     export = 'exportVIS';
+    alpha=3.5;
     % @channel[] permette di selezionare i canali da passare a compositeImg
     channel = [15, 8, 1];
-    %Creazione cartelle
-    destDir = sprintf('%s/exportVIS/%02d',rootpath, 0);
-    if not(isfolder(destDir))
-        mkdir(destDir);
-    end
-    for r = 1:k
-        destDir = sprintf('%s/exportVIS/%02d',rootpath, r); 
-        if not(isfolder(destDir))
-           mkdir(destDir);
-        end
-    end
 
 elseif indx == 2
     k = 24;
     ws = 5;
     M = M5;
     export = 'exportNIR';
+    alpha = 4.37;
     % @channel[] permette di selezionare i canali da passare a compositeImg
     channel = [8, 8, 13];
-    %Creazione cartelle
-    destDir = sprintf('%s/exportNIR/%02d',rootpath, 0);
-        if not(isfolder(destDir))
-            mkdir(destDir);
-        end
-        for r = 1:k
-            destDir = sprintf('%s/exportNIR/%02d',rootpath, r); 
-            if not(isfolder(destDir))
-                mkdir(destDir);
-            end
-        end
 else
     errordlg('Ops! Qualcosa è andato storto', 'ERRORE')
 end
+    
+    %Creazione cartelle
+for r = 0:k
+    destDir = sprintf('%s/%s/%02d',rootpath, export, r); 
+    if not(isfolder(destDir))
+       mkdir(destDir);
+    end
+end
+
+stepss = 0;
+for i = 1:length(MOD_dir)
+    if MOD_dir(i).isdir == false
+        stepss = stepss +1;
+    end
+end  
 
 f = waitbar(0, 'Elaborazione delle immagini in corso...', 'Name', 'Esportazioni');
 steps = length(MOD_dir);
 for i = 1:steps
+    if MOD_dir(i).isdir == true
+        continue;
+    end
     %Controllo su filename
     % @filename = nome del file con estensione .npy
     filename = strrep(MOD_dir(i).name,'.png','');    
@@ -66,6 +63,7 @@ for i = 1:steps
         Ir_rot270 = rot90(Ir_res, 3);
         imwrite(Ir_rot270,filename_in);
     end
-    waitbar(i/steps, f, sprintf('%d/%d completate', i, steps));
+    
+    waitbar(i/stepss, f, sprintf('%d/%d completate', i, stepss));
 end
 delete(f);

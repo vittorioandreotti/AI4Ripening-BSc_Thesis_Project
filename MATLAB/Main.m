@@ -3,7 +3,17 @@ clc;
 
 load('calib.mat');
 % @rootpath = cartella del dataset
-rootpath = uigetdir('','SELEZIONA IL DATASET.');
+roothpath = '';
+condition = true;
+while condition 
+    if ischar(roothpath)
+        rootpath = uigetdir('','SELEZIONA IL DATASET.');
+        condition = false;
+    else 
+        waitfor(warndlg('Effettua una scelta.', 'ATTENZIONE'));
+        rootpath = uigetdir('','SELEZIONA IL DATASET.');
+    end
+end
 % rootpath = 'C:\Users\andre\Desktop\Programmazione\Tesi\Materiale\DATA\data_ulivo_20-10-20';
 
 % @indx = scelta utente
