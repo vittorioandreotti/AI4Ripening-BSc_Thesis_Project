@@ -6,7 +6,7 @@ if not(isfolder(destDir))
     mkdir(destDir);
 end
 
-f = waitbar(0, 'Elaborazione delle immagini in corso...', 'Name', 'Attendi...');
+f = waitbar(0, 'Elaborazione delle immagini in corso...', 'Name', 'Equalizzazione');
 steps = length(VIS_export_dir);
 for i=1:steps
     if VIS_export_dir(i).isdir == true

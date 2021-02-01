@@ -48,7 +48,7 @@ for i = 1:steps
             NIR = sprintf('%s/exportNIR/%02d/%02d_NIR_%d.npy.png',rootpath, k, k, temp);
             imgNIR = imread(NIR);
 
-            filename = sprintf('%s/exportNIR/%02d/Reg/%02d_NIR_%d.npy.png',rootpath, k, k, temp);
+            filename = sprintf('%s/exportNIR/%02d/Reg/%02d_NIR_%d.npy.png',rootpath, k, k, VIS_tm);
             movreg = imwarp (imgNIR, p.movRefObj, p.tform, 'OutputView', p.fixRefObj, 'SmoothEdges', p.val);
             imwrite(movreg, filename);
         end
