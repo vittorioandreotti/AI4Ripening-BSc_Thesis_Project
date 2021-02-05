@@ -14,7 +14,6 @@ while condition
         rootpath = uigetdir('','SELEZIONA IL DATASET.');
     end
 end
-% rootpath = 'C:\Users\andre\Desktop\Programmazione\Tesi\Materiale\DATA\data_ulivo_20-10-20';
 
 % @indx = scelta utente
 list = {'VIS', 'NIR'};

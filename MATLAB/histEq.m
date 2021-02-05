@@ -1,4 +1,4 @@
-path=sprintf('%s/exportVIS/%02d/', rootpath, 0);
+si è sceltpath=sprintf('%s/exportVIS/%02d/', rootpath, 0);
 VIS_export_dir = dir(path);
 
 destDir = sprintf('%s/exportVIS/%02d/Hist_eq',rootpath, 0);

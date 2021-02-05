@@ -1,9 +1,11 @@
+rootpath = 'C:\Users\andre\Desktop\Università\Tesi\Analisi maturazione multispettrale\DATA\data_ulivo_20-10-20';
 pathVIS = sprintf('%s/exportVIS/00/Hist_eq', rootpath);
 VIS_dir = dir(pathVIS);
 %File json contenente Dataset di LabelBox
 JSON = 'C:\Users\andre\Desktop\Università\Tesi\Analisi maturazione multispettrale\label.json';
 
 steps = length(VIS_dir);
+% stepss: var avanzameno processo
 stepss = 0;
 
 for i = 1:steps

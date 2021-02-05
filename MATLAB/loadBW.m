@@ -19,5 +19,6 @@ for i = 1:l
     Ib = Ib + tmp;
 end
 Ib = Ib ./ l;
+Ib;
 
 

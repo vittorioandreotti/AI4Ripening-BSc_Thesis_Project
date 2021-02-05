@@ -32,8 +32,8 @@ function cell_bbox = bbox(filename, img_name, allch)
             cell_bbox {i,1} = bbox;
         end
     catch
-        %Se bboxes non è stato creato (ovverol'immagine non è stata
-        %'labelizzata'), viene mostrato un dialog di errore.
+        %Se bboxes non è stato creato (ovvero l'immagine non è stata
+        %labelizzata'), viene mostrato un dialog di errore.
         err = sprintf('Immagine VIS_%d non trovata', img_name);
         errordlg(err, 'ERRORE');
     end

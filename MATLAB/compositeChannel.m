@@ -27,7 +27,16 @@ for i = 1:length(NIR_dir)
         continue;
     end
     NIR = sprintf('%s/%02d/Reg/%02d_NIR_%d.npy.png', pathNIR, dir_nameNIR,dir_nameNIR, name);
-    imgNIR = imread(NIR);
-    % si aggiungono i restanti 24 canali a allch
-    allch(:,:,dir_nameNIR+15) = imgNIR;
+    %se l'immagine NIR non esiste (questo è dovuto al fallimento della
+    %registrazione dell'immagine) viene mostrato un dialog di errore che
+    %specifica quale immagine non esiste.
+    try
+        imgNIR = imread(NIR);
+        % si aggiungono i restanti 24 canali a allch
+        allch(:,:,dir_nameNIR+15) = imgNIR;
+    catch
+         err = sprintf('Immagine NIR_%d non trovata', name);
+         errordlg(err, 'ERRORE');
+        break;
+    end
 end
