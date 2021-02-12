@@ -1,3 +1,4 @@
+rootpath = %specificare il proprio rootpath prima dell'esecuzione
 pathVIS = sprintf('%s/exportVIS/00/Hist_eq', rootpath);
 pathNIR = sprintf('%s/exportNIR/13',rootpath);
 
@@ -18,7 +19,9 @@ for i = 1:steps
         continue;
     end
     VIS_tm = str2double(VIS_dir(i).name(8:end-8));
+    %inizialmente lo scarto è pari al double del nome VIS
     Scrt = VIS_tm;
+    %alla fine del ciclo si prende il NIR più vicino
     for j = 1:length(NIR_dir)
         if NIR_dir(j).isdir == true
             continue;
@@ -37,6 +40,7 @@ for i = 1:steps
     imgVIS = imread(VIS);
     imgNIR = imread(NIR);
     try 
+        %selezione del solo canale 13 (vd. tesi per i motivi)
         filename = sprintf('%s/exportNIR/%02d/Reg/%02d_NIR_%d.npy.png',rootpath, 13, 13, temp);
         [movreg, p] = registerImages(imgNIR, imgVIS);
         for k = 0 : 24
@@ -49,6 +53,7 @@ for i = 1:steps
             imgNIR = imread(NIR);
 
             filename = sprintf('%s/exportNIR/%02d/Reg/%02d_NIR_%d.npy.png',rootpath, k, k, VIS_tm);
+            %registrazione per tutti gli altri canali dell'immagine
             movreg = imwarp (imgNIR, p.movRefObj, p.tform, 'OutputView', p.fixRefObj, 'SmoothEdges', p.val);
             imwrite(movreg, filename);
         end

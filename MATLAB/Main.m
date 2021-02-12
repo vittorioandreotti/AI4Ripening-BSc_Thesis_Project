@@ -39,10 +39,8 @@ MOD_dir = dir(path_MOD);
 if indx == 1
     batchProcessImg;
     histEq;
-    regIm;
 elseif indx == 2
     batchProcessImg;
-    regIm;
 else
     errordlg('Ops! Qualcosa è andato storto', 'ERRORE');
 end

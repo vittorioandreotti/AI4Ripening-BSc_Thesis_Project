@@ -37,3 +37,11 @@ for i = 1:steps
     all_stats(a).stats = struct_stats;
     waitbar(a/stepss, f, sprintf('%d/%d completate', a, stepss));
 end
+
+for j = 1:length(all_stats)
+    for i = 1:length(all_stats(j).stats)
+        X(:,i) = all_stats(j).stats(i).mean;
+    end
+    filein = sprintf('x%d.txt', j);
+    dlmwrite(filein, X);
+end
