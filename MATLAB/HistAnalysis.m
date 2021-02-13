@@ -1,4 +1,4 @@
-rootpath = 'C:\Users\andre\Desktop\Università\Tesi\Analisi maturazione multispettrale\DATA\data_ulivo_20-10-20';
+rootpath = %specificare rootpath
 pathVIS = sprintf('%s/exportVIS/00/Hist_eq', rootpath);
 VIS_dir = dir(pathVIS);
 %File json contenente Dataset di LabelBox
