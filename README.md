@@ -1,28 +1,29 @@
-# Stima del grado di maturazione di olive mediante immagini multispettrali VIS-NIR coregistrate.
+# Estimation of Olive Ripeness Degree Using Co-Registered VIS–NIR Multispectral Images
 
-## Introduzione
-L'obiettivo del progetto è sfruttare il clustering, un approccio unsupervised, per il riconoscimento del grado di maturazione di olive. Le immagini sono state catturate con un sensore multispettrale e raccolte nella cartella "dataset", insieme ai file di calibrazione.
+## Introduction
+The goal of the project is to exploit clustering—an unsupervised approach—for recognizing the ripeness (maturation stage) of olives. The images were captured with a multispectral sensor (original source contained truncated text [...]).
 
-## Esecuzione
-La maggior parte del codice è stato scritto in MATLAB e di seguito se ne illustra la struttura:
+## Execution
+Most of the code was written in MATLAB, and its structure is outlined below.
+
 ### Main
-Il file "Main.m" permette di eseguire elaborazione delle immagini ed equalizzazione delle VIS. All'avvio, scegliere la cartella dataset contenente le rilevazioni tramite l'interfaccia grafica e la tipologia di immagini da elaborare.
+The file `Main.m` allows you to perform image processing and VIS equalization. At startup, select the dataset folder containing the acquisitions through the graphical interface and the (original source truncated here [...]).
 
-### Coregistrazione
-Per la coregistrazione servirsi del file "regIm.m", ricordandosi di specificare il "rootpath" nella prima riga del codice (è la cartella dataaset prima menzionata).
+### Coregistration
+For coregistration use the file `regIm.m`, remembering to specify the `rootpath` on the first line of the code (this is the previously mentioned dataset folder).
 
-### Statistiche
-Per ottenere le statistiche, eseguire il file "HistAnalys.m" specificando il rootpath.
+### Statistics
+To obtain the statistics, run the file `HistAnalys.m` specifying the `rootpath`.
 
 ### Clustering
-Per il clustering:
-1) Convertire la struttura contenente le statistiche in file ".txt".
-2) Eliminare le bande rumorose con il notebook Jupiter e scaricare le esportazioni ".csv".
-3) Dell'importazione dei file ".csv" in MATLAB se ne occupa sia "k_means.m" che "dbscan.m".
-4) Per adottare algoritmo k-means --> "k_means.m".
-5) Per adottare algoritmo DBscan --> "db_scan.m".
+For clustering:
+1. Convert the structure containing the statistics into `.txt` files.
+2. Remove noisy bands using the Jupyter notebook (spelled “Jupiter” in the original) and download the exported `.csv` files.
+3. Import of the `.csv` files into MATLAB is handled by both `k_means.m` and `dbscan.m`.
+4. To use the k-means algorithm → `k_means.m`.
+5. To use the DBSCAN algorithm → `db_scan.m`.
 
-## Package
-I tool sfruttati su MATLAB (versione R2020a) sono:
-1) Image Processing Toolbox.
-2) Statistics and Machine Learning Toolbox.
+## Packages
+The MATLAB toolboxes (version R2020a) used are:
+1. Image Processing Toolbox.
+2. Statistics and Machine Learning Toolbox.
